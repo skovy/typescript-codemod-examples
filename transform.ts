@@ -1,5 +1,4 @@
 import { Transform } from "jscodeshift";
-import { isParenthesizedTypeNode } from "typescript";
 
 const transform: Transform = (file, api) => {
   // Alias the jscodeshift API for ease of use.
