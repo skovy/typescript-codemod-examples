@@ -21,7 +21,6 @@ const transform: Transform = (file, api) => {
         node.callee.property.name === "brew"
       ) {
         const [waterArg] = node.arguments;
-        console.log(waterArg)
         return waterArg.type === "Literal" && waterArg.value !== "💧";
       }
     })
@@ -32,7 +31,7 @@ const transform: Transform = (file, api) => {
       if (waterArg.type === "Literal") {
         waterArg.value = "💧";
       }
-      console.log(node)
+
       return node;
     });
 
