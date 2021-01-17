@@ -8,7 +8,7 @@ const transform: Transform = (file, api) => {
   // Convert the entire file source into a collection of nodes paths.
   const root = j(file.source);
 
-  const brewCalls = root
+  root
     .find(j.CallExpression)
     .filter((path) => {
       const { node } = path;
@@ -21,22 +21,20 @@ const transform: Transform = (file, api) => {
         node.callee.property.name === "brew"
       ) {
         const [waterArg] = node.arguments;
-
-        return waterArg.type === "StringLiteral" && waterArg.value !== "💧";
+        console.log(waterArg)
+        return waterArg.type === "Literal" && waterArg.value !== "💧";
       }
     })
     .replaceWith((path) => {
       const { node } = path;
 
       const [waterArg] = node.arguments;
-      if (waterArg.type === "StringLiteral") {
+      if (waterArg.type === "Literal") {
         waterArg.value = "💧";
       }
-
+      console.log(node)
       return node;
     });
-
-  console.log(brewCalls);
 
   return root.toSource();
 };
