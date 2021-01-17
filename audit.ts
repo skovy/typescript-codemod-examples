@@ -11,7 +11,7 @@ const args = [
 
 // Find all files at any directory level starting in this directory,
 // except anything that is in `node_modules`.
-const files = glob.sync("./**/*.js", { ignore: "./node_modules/**" });
+const files = glob.sync("./src/*.js", { ignore: "./node_modules/**" });
 
 files.forEach((file) => {
   const contents = fs.readFileSync(file).toString();
