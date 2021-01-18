@@ -20,14 +20,14 @@ const transform: Transform = (file, api) => {
         node.callee.property.name === "brew"
       ) {
         const [waterArg] = node.arguments;
-        return waterArg.type === "Literal" && waterArg.value !== "💧";
+        return waterArg.type === "StringLiteral" && waterArg.value !== "💧";
       }
     })
     .replaceWith((path) => {
       const { node } = path;
 
       const [waterArg] = node.arguments;
-      if (waterArg.type === "Literal") {
+      if (waterArg.type === "StringLiteral") {
         waterArg.value = "💧";
       }
 

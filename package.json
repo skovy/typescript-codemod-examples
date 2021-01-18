@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "audit": "ts-node ./audit.ts",
-    "codemod": "jscodeshift -t ./transform.ts ./src"
+    "codemod": "jscodeshift -t ./transform.ts --parser babylon ./src"
   },
   "devDependencies": {
     "@babel/parser": "^7.12.11",
